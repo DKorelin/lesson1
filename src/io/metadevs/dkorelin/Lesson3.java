@@ -5,35 +5,36 @@ public class Lesson3 {
         int num = 0;
         switch (num) {
             case 1:
-                System.out.println("число равно 1");
+                System.out.println("num is equal 1");
                 break;
             case 8:
-                System.out.println("число равно 8");
+                System.out.println("num is equal 8");
                 break;
             case 9:
-                System.out.println("число равно 9");
+                System.out.println("num is equal 9");
                 break;
             default:
-                System.out.println("число не равно 1, 8, 9");
+                System.out.println("num is not equal 1, 8, 9");
         }
-        comparisonsOperators(3);
-        loops();
-        leapyearСheck(85);
+        logicOperationExamples(3);
+        printFirstHungeredNumbersViaWhile();
+        printAllLeapyears(85);
     }
 
-    public static void comparisonsOperators(int num) {
+    public static void logicOperationExamples(int num) {
         if (num != 8 && num != 1 && num != 9) {
-            System.out.println("Число не равно 1, 8, 9");
-        } else System.out.println("Число равно 1, 8 или 9");
-        if (num == 0 || num == 1) {
-            System.out.println("Число равно 1 или 0");
+            System.out.println("num is not equal 1, 8, 9");
         } else {
-            System.out.println("Число не равно ни 1, ни 0");
+            System.out.println("num is equal 1, 8 or 9");
         }
-
+        if (num == 0 || num == 1) {
+            System.out.println("num is equal 1 or 0");
+        } else {
+            System.out.println("num neither equal  1 nor 0");
+        }
     }
 
-    public static void loops() {
+    public static void printFirstHungeredNumbersViaWhile() {
         int counter = 1;
         while (counter < 100) {
             counter++;
@@ -41,7 +42,7 @@ public class Lesson3 {
         }
     }
 
-    public static void leapyearСheck(int year) {
+    public static void printAllLeapyears(int year) {
         while (year >= 0) {
             if (year % 4 == 0) {
                 System.out.println("Високосный год: " + year);
