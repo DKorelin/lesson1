@@ -1,10 +1,9 @@
 package io.metadevs.dkorelin;
-
+enum FeederAction {TAKE,GIVE}
+enum Parity {ODD,EVEN}
 public class PussyFeeder {
     static final int MAXFOOD = 7;
     protected int[] food;
-    public enum FeederAction {TAKE,GIVE}
-    public enum Parity {ODD,EVEN}
 
     PussyFeeder(int numOfCats) {
         this.food = new int[numOfCats];

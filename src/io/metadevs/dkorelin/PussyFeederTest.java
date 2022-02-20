@@ -2,13 +2,12 @@ package io.metadevs.dkorelin;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import java.util.regex.*;
 
 public class PussyFeederTest {
     static Scanner input = new Scanner(System.in);
     static PussyFeeder pf;
+
     public static void main(String[] args) {
         System.out.println("Welcome to pussy feeder. How many pussies you would like to feed?");
         int numOfCats = getUserInt();
@@ -43,36 +42,42 @@ public class PussyFeederTest {
 
     public static void changeOneFeederTest() {
         System.out.println("Enter action GIVE/TAKE and number of pussy after whitespace");
-        Pattern pattern = Pattern.compile("(TAKE|GIVE)\\s\\d");
+        Pattern pattern = Pattern.compile("(TAKE|GIVE)\\s\\d+");
         String parseErrorMessage = "Wrong command sequence. Enter action GIVE/TAKE and number of pussy after whitespace";
-        String[] words = parseInput(pattern,parseErrorMessage);
-        PussyFeeder.FeederAction feederAction = PussyFeeder.FeederAction.valueOf(words[0]);
+        String[] words = parseInputWithErrorMessage(pattern,parseErrorMessage);
+        FeederAction testAction = FeederAction.valueOf(words[0]);
         int catPosition = Integer.parseInt(words[1]);
-        pf.changeOneFeeder(catPosition, feederAction);
+        if (catPosition < pf.food.length) {
+            pf.changeOneFeeder(catPosition, testAction);
+        }
+        else {
+            System.out.println("Erroneous position granted.");
+        }
+
     }
 
     public static void changeAnyFeederTest() {
         System.out.println("enter action GIVE/TAKE");
         Pattern pattern = Pattern.compile("(TAKE|GIVE)");
         String parseErrorMessage = "Wrong command sequence. Enter action GIVE/TAKE";
-        String[] words = parseInput(pattern,parseErrorMessage);
-        PussyFeeder.FeederAction feederAction = PussyFeeder.FeederAction.valueOf(words[0]);
-        pf.changeAnyFeeder(feederAction);
+        String[] words = parseInputWithErrorMessage(pattern,parseErrorMessage);
+        FeederAction testAction = FeederAction.valueOf(words[0]);
+        pf.changeAnyFeeder(testAction);
     }
 
     public static void changeOddOrEvenFeederTest() {
         System.out.println("Enter action GIVE/TAKE and parity ODD/EVEN after whitespace");
         Pattern pattern = Pattern.compile("(TAKE|GIVE)\\s(ODD|EVEN)");
         String parseErrorMessage = "Wrong command sequence. Enter action GIVE/TAKE and parity ODD/EVEN after whitespace";
-        String[] words = parseInput(pattern,parseErrorMessage);
-        PussyFeeder.FeederAction feederAction = PussyFeeder.FeederAction.valueOf(words[0]);
-        PussyFeeder.Parity parity = PussyFeeder.Parity.valueOf(words[1]);
-        pf.changeOddOrEvenFeeder(feederAction, parity);
+        String[] words = parseInputWithErrorMessage(pattern,parseErrorMessage);
+        FeederAction testAction = FeederAction.valueOf(words[0]);
+        Parity testParity = Parity.valueOf(words[1]);
+        pf.changeOddOrEvenFeeder(testAction, testParity);
     }
 
     static int getUserInt(){
         while (!input.hasNextInt()) {
-            System.out.println("Введено не число");
+            System.out.println("Number required. Enter a nubmer!");
             input.nextLine();
         }
         int result = input.nextInt();
@@ -80,7 +85,7 @@ public class PussyFeederTest {
         return result;
     }
 
-    static  String[] parseInput(Pattern pattern,String parseErrStr){
+    static  String[] parseInputWithErrorMessage(Pattern pattern,String parseErrStr){
         String inputLine = input.nextLine();
         Matcher matcher = pattern.matcher(inputLine);
         while (!matcher.matches()){
