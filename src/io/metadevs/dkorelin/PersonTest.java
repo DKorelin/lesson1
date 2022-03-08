@@ -11,6 +11,9 @@ public class PersonTest {
 
         System.out.println("Bob salaryValidate() test");
         salaryValidateTest(bob);
+        final Person mrDefault;
+        mrDefault = new Person();
+        System.out.println(mrDefault.toString());
     }
 
     static void rebrandingTest(){
@@ -25,9 +28,9 @@ public class PersonTest {
 
     static void salaryIsGreaterOrEqualAgeTest(Person p){
         if (p.salaryIsGreaterOrEqualAge()) {
-            System.out.printf("Company politics for %s are satisfied\n",p.getName());
+            System.out.printf("Company politics for %s are satisfied%n",p.getName());
         } else {
-            System.out.printf("Company politics for %s are inappropriate\n",p.getName());
+            System.out.printf("Company politics for %s are inappropriate%n",p.getName());
         }
     }
 
@@ -36,7 +39,7 @@ public class PersonTest {
             p.salaryValidate();
         } catch (Exception e) {
             System.out.println("Entered exception catch");
-            System.out.printf("Company politics for %s are inappropriate\n",p.getName());
+            System.out.printf("Company politics for %s are inappropriate%n",p.getName());
         }
     }
 }

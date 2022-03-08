@@ -7,12 +7,26 @@ public class Person {
     private int age;
     private double salary;
 
+    static {
+        companyName = "Static init name";
+    }
+    {
+        this.companyName = "Nonstatic init name";
+        lastname = "mr non static";
+        name = "bob";
+        age = 100;
+        salary = 777;
+    }
     public Person(String lastname, String name, int age, double salary) {
         this.lastname = lastname;
         this.name = name;
         this.age = age;
         this.salary = salary;
     }
+    public Person(){
+
+    }
+
 
     public static void rebranding(String newName) {
         companyName = newName;
