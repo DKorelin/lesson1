@@ -26,6 +26,7 @@ public class MacDonalds {
             customers.add(new Customer());
         }
         for (Customer customer : customers) {
+            //reverse: customer calls myMac
             myMac.addOrder(customer.getOrder());//Not API?
         }
         System.out.println("bob");
