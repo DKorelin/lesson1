@@ -1,18 +1,25 @@
 package io.metadevs.dkorelin;
 
-public class Customer implements CustomerService {
-    private Order customerOrder;
-    public Customer() {
-        this.customerOrder = new Order();
+public class Customer {
+    private final Order order;
+    private OrderObserver orderObserver;
+
+    public Customer(OrderObserver orderObserver) {
+        this.order = new Order();
+        addOrderObserver(orderObserver);
     }
 
-    @Override
-    public Order getOrder() {
-        return customerOrder;
+    public void makeOrder() {
+        notifyObservers();
     }
 
-    @Override
-    public boolean recieveOrder(Order order) {
-        return order == customerOrder;
+    public void addOrderObserver(OrderObserver orderObserver) {
+        this.orderObserver = orderObserver;
+    }
+
+    private void notifyObservers() {
+        if (orderObserver != null) {
+            orderObserver.handleOrderEvent(new OrderEvent(this.order));
+        }
     }
 }
