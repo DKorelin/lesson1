@@ -19,7 +19,7 @@ public class Customer {
 
     private void notifyObservers() {
         if (orderObserver != null) {
-            orderObserver.handleOrderEvent(new OrderEvent(this.order));
+            orderObserver.handleOrderEvent(this.order);
         }
     }
 }

@@ -34,7 +34,7 @@ public class Worker implements Comparable<Worker> {
 
     public void notifyObservers() {
         if (workerObserver != null) {
-            workerObserver.handleWorkerEvent(new WorkerEvent(this));
+            workerObserver.handleWorkerEvent(this);
         }
     }
 

@@ -12,8 +12,8 @@ public class Mac implements OrderObserver, WorkerObserver {
         productivityMap.put(worker, 0);
     }
 
-    public void handleOrderEvent(OrderEvent orderEvent) {
-        orderQueue.add(orderEvent.getSource());
+    public void handleOrderEvent(Order order) {
+        orderQueue.add(order);
         startWorkerIfAnyFree();
     }
 
@@ -26,9 +26,8 @@ public class Mac implements OrderObserver, WorkerObserver {
         }
     }
 
-    public void handleWorkerEvent(WorkerEvent workerEvent) {
-        Worker freeWorker = workerEvent.getSource();
-        workerIdleList.add(freeWorker);
+    public void handleWorkerEvent(Worker worker) {
+        workerIdleList.add(worker);
         if (!orderQueue.isEmpty()) {
             startWorkerIfAnyFree();
         }

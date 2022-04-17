@@ -1,5 +1,5 @@
 package io.metadevs.dkorelin;
 
 public interface OrderObserver {
-    void handleOrderEvent(OrderEvent orderEvent);
+    void handleOrderEvent(Order order);
 }
