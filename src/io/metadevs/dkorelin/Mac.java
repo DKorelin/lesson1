@@ -14,22 +14,24 @@ public class Mac implements OrderObserver, WorkerObserver {
 
     public void handleOrderEvent(Order order) {
         orderQueue.add(order);
-        startWorkerIfAnyFree();
+        startWorker();
     }
 
-    private void startWorkerIfAnyFree() {
-        if (workerIdleList.size() != 0) {
-            Worker freeWorker = workerIdleList.remove(0);
-            int n = productivityMap.get(freeWorker);
-            productivityMap.replace(freeWorker, n + 1);
-            freeWorker.processOrder(orderQueue.remove());
+    private void startWorker() {
+        if (workerIdleList.size() == 0) {
+            return;
         }
+
+        Worker freeWorker = workerIdleList.remove(0);
+        int n = productivityMap.get(freeWorker);
+        productivityMap.replace(freeWorker, n + 1);
+        freeWorker.processOrder(orderQueue.remove());
     }
 
     public void handleWorkerEvent(Worker worker) {
         workerIdleList.add(worker);
         if (!orderQueue.isEmpty()) {
-            startWorkerIfAnyFree();
+            startWorker();
         }
     }
 
