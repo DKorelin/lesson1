@@ -1,9 +1,9 @@
 package io.metadevs.dkorelin;
 
 public class Manager implements Worker{
-    String name;
-    double salary;
-    double kpi;
+    private String name;
+    private double salary;
+    private double kpi;
 
     public Manager(String name,double salary, double kpi){
         this.name = name;

@@ -1,9 +1,9 @@
 package io.metadevs.dkorelin;
 
 public class Employee implements Worker{
-    String name;
-    double salary;
-    int roomAccessLevel;
+    private String name;
+    private double salary;
+    private int roomAccessLevel;
 
     public Employee(String name,double salary, int roomAccessLevel) {
         this.name = name;
