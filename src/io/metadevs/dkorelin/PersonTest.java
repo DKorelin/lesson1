@@ -6,14 +6,11 @@ public class PersonTest {
     public static void main(String[] args) {
         rebrandingTest();
 
-        System.out.println("Alice salaryIsGreaterOrEqualAge() test");
-        salaryIsGreaterOrEqualAgeTest(alice);
+        System.out.println("Alice isSalaryGreaterOrEqualAge() test");
+        isSalaryGreaterOrEqualAgeTest(alice);
 
         System.out.println("Bob salaryValidate() test");
         salaryValidateTest(bob);
-        final Person mrDefault;
-        mrDefault = new Person();
-        System.out.println(mrDefault.toString());
     }
 
     static void rebrandingTest(){
@@ -26,8 +23,8 @@ public class PersonTest {
         System.out.println(bob.toString());
     }
 
-    static void salaryIsGreaterOrEqualAgeTest(Person p){
-        if (p.salaryIsGreaterOrEqualAge()) {
+    static void isSalaryGreaterOrEqualAgeTest(Person p){
+        if (p.isSalaryGreaterOrEqualAge()) {
             System.out.printf("Company politics for %s are satisfied%n",p.getName());
         } else {
             System.out.printf("Company politics for %s are inappropriate%n",p.getName());

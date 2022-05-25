@@ -5,13 +5,12 @@ import java.util.List;
 
 public class Company {
     private String companyName;
+    private List<Person> personList = new ArrayList<>();
 
     public Company(String companyName) {
         this.companyName = companyName;
         Person.rebranding(companyName);
     }
-
-    private List<Person> personList = new ArrayList<>();
 
     public void hirePerson(Person person) {
         personList.add(person);

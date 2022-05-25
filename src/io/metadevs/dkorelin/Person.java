@@ -14,22 +14,17 @@ public class Person {
         this.salary = salary;
     }
 
-    public Person(){
-
-    }
-
-
     public static void rebranding(String newName) {
         companyName = newName;
     }
 
-    public boolean salaryIsGreaterOrEqualAge() {
+    public boolean isSalaryGreaterOrEqualAge() {
         return (int) salary >= age;
     }
 
-    public void salaryValidate() throws Exception {
-        if (!salaryIsGreaterOrEqualAge()) {
-            throw new Exception("salary politics violation");
+    public void salaryValidate() throws PersonException {
+        if (!isSalaryGreaterOrEqualAge()) {
+            throw new PersonException("salary politics violation");
         }
     }
 
